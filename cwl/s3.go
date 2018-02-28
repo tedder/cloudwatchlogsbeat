@@ -36,7 +36,7 @@ func (registry *S3Registry) ReadStreamInfo(stream *Stream) error {
 	logp.Info("Fetching registry info for %s", key)
 	input := &s3.GetObjectInput{
 		Bucket: aws.String(registry.BucketName),
-		Key:    aws.String(registry.KeyPrefix + key),
+		Key:    aws.String(stream.Params.Config.S3KeyPrefix + key),
 	}
 	result, err := registry.S3Client.GetObject(input)
 	if err != nil {
@@ -68,6 +68,7 @@ func (registry *S3Registry) ReadStreamInfo(stream *Stream) error {
 	stream.queryParams.NextToken = aws.String(item.NextToken)
 	stream.buffer.Reset()
 	stream.buffer.WriteString(item.Buffer)
+
 
 	return nil
 }

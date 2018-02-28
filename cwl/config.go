@@ -63,9 +63,9 @@ func (config *Config) Validate() error {
 }
 
 func (config *Config) String() string {
-	return "settings: " +
+	return "vted settings: " +
 		fmt.Sprintf("s3_bucket_name=%s", config.S3BucketName) +
-		fmt.Sprintf("|s3_key_prefix=%s", config.S3KeyPrefix) +
+		fmt.Sprintf("|s3_key_prefix=%v", config.S3KeyPrefix) +
 		fmt.Sprintf("|aws_region=%v", config.AWSRegion) +
 		fmt.Sprintf("|group_refresh_frequency=%v", config.GroupRefreshFrequency) +
 		fmt.Sprintf("|stream_refresh_frequency=%v", config.StreamRefreshFrequency) +
